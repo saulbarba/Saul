@@ -1,0 +1,84 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "name": "1_practica_inteligencia.NOT",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/saulbarba/Saul/blob/main/1_practica_inteligencia_OR.\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "X = np.array([\n",
+        "    [0],\n",
+        "    [1],\n",
+        "])\n",
+        "\n",
+        "Y=np.array([0,1])\n",
+        "W=[1]\n",
+        "umbral=1\n",
+        "\n",
+        "class McCullochPitts:\n",
+        "    def __init__(self, weigths, umbral):\n",
+        "        self.weights=weigths\n",
+        "        self.umbral=umbral\n",
+        "\n",
+        "    def predict(self, X):\n",
+        "        predictions = []\n",
+        "        for i in range(X.shape[0]):\n",
+        "            weighted_sum = np.dot(self.weights, X[i])\n",
+        "            print(f\"Input:{X[i]}, Weighted Sum: {weighted_sum}\")\n",
+        "            if weighted_sum >= self.umbral:\n",
+        "                predictions.append(0)\n",
+        "            else:\n",
+        "                predictions.append(1)\n",
+        "        return predictions\n",
+        "\n",
+        "mcp = McCullochPitts(W,umbral)\n",
+        "predictions = mcp.predict(X)\n",
+        "print(\"Predictions\",predictions)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "k0vr-Xv7gV9D",
+        "outputId": "69a5374e-bcf1-4605-a9e1-837016e54c95"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Input:[0], Weighted Sum: 0\n",
+            "Input:[1], Weighted Sum: 1\n",
+            "Predictions [1, 0]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
